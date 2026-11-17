@@ -1,0 +1,51 @@
+{
+  "name": "digitalize-sms",
+  "version": "1.0.0",
+  "description": "Node.js client for the Digitalize Lab SMS API: OTP and alert messages from approved templates.",
+  "keywords": ["sms", "otp", "sudan", "digitalize"],
+  "homepage": "https://digitalize.sd/developers/sms",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/amolood/digitalize-sms-node.git"
+  },
+  "bugs": "https://github.com/amolood/digitalize-sms-node/issues",
+  "license": "MIT",
+  "author": "Digitalize Lab",
+  "type": "module",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/esm/index.d.ts",
+  "exports": {
+    ".": {
+      "import": {
+        "types": "./dist/esm/index.d.ts",
+        "default": "./dist/esm/index.js"
+      },
+      "require": {
+        "types": "./dist/cjs/index.d.ts",
+        "default": "./dist/cjs/index.js"
+      }
+    },
+    "./package.json": "./package.json"
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "sideEffects": false,
+  "engines": {
+    "node": ">=20.3"
+  },
+  "scripts": {
+    "build": "node scripts/clean.mjs && tsc -p tsconfig.json && tsc -p tsconfig.cjs.json && node scripts/mark-cjs.mjs",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "test": "npm run build && node --test \"test/*.test.*\"",
+    "prepack": "npm run build"
+  },
+  "devDependencies": {
+    "@types/node": "^20.19.0",
+    "typescript": "^5.9.3"
+  }
+}
